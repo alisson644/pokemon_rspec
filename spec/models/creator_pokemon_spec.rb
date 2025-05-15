@@ -4,6 +4,12 @@ RSpec.describe CreatorPokemon do
   let(:creator_pokemon) do
     CreatorPokemon.new(6)
   end
+  before do
+    path_file = 'spec/fixtures/services/response.txt'
+    file_response = File.new(path_file)
+    stub_request(:get, 'https://pokeapi.co/api/v2/pokemon/6')
+      .to_return(file_response)
+  end
   describe '#create' do
     it 'create a new pokemon' do
       expect do
