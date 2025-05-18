@@ -4,21 +4,16 @@ RSpec.describe CreatorPokemon do
   let(:creator_pokemon) do
     CreatorPokemon.new(6)
   end
-  before do
-    path_file = 'spec/fixtures/services/response.txt'
-    file_response = File.new(path_file)
-    stub_request(:get, 'https://pokeapi.co/api/v2/pokemon/6')
-      .to_return(file_response)
-  end
-  describe '#create' do
+
+  describe '#create', vcr: { cassette_name: 'CreatorPokemon/create' } do
     it 'create a new pokemon' do
       expect do
-        creator_pokemon.create
+          creator_pokemon.create
       end.to change { Pokemon.count }.by(1)
     end
   end
 
-  describe 'pokemon created' do
+  describe 'pokemon created', vcr: { cassette_name: 'CreatorPokemon/create' } do
     before do
       creator_pokemon.create
     end
