@@ -40,6 +40,7 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 gem "rubocop", require: false
+gem "vcr"
 gem "webmock"
 
 group :development, :test do
