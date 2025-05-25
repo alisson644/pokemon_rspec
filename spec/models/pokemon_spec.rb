@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe '#nome_completo' do
+RSpec.describe '#name_completo' do
   context "When have name and id_national" do
     let(:pokemon) do
       Pokemon.new(name: "Charizard", id_national: 6)
